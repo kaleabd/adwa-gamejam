@@ -16,11 +16,11 @@ function App() {
   } 
   const adwayear = randomizeDigits(adwayears.year5)
   return (
-    <div className="bg-red-600">
-      <h2>{adwayear}</h2>
+    <div className="bg-gray-700">
       <div>
         <PlayersField adwanumber={adwayear}/>
       </div>
+      <h2>{adwayear}</h2>
       <Home />
     </div>
   );
