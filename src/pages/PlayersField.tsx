@@ -50,6 +50,7 @@ function PlayersField(props: PlayersFieldProps) {
   return (
     <div className='w-full h-auto relative gap-4'>
      {
+      // pop up window
       winState ? (
         <div className="absolute flex flex-col justify-center items-center top-[30%] left-[40%] bg-white p-12 z-50 w-[40%] h-[40vh]">
           <h2>you're correct the guess number was {props.adwanumber}</h2>
