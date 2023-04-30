@@ -2,6 +2,7 @@ import { useState} from "react"
 import useGameDataStore from "../utils/GameStore";
 import Brana from '../assets/Rectangle 1.png'
 import years from "../assets/data";
+import Scroll from '../assets/popup.png'
 interface PlayersFieldState {
   userGuess: number | string;
 }
@@ -52,16 +53,15 @@ function PlayersField(props: PlayersFieldProps) {
       winState ? (
         <>
         <div className="absolute w-full h-screen top-0 bg-black/70 z-20"></div>
-        <div className="absolute flex flex-col justify-center items-center top-[30%] left-[30%] bg-white p-12 z-50 w-[40%] h-[40vh]">
-          
-          <div className="relative">
-            <button className="text-lg bg-red-400 text-white rounded-[50%] px-2 absolute top-[-7rem] left-[20rem]" onClick={() => setWinState(false)}>X</button>
-          </div>
-          
-          <h2>you're correct the guess number was {props.adwanumber}</h2>
+        <img src={Scroll} alt="" className="absolute w-full top-[20%] left-[3%] z-[100]"/>
+       <div className="absolute left-[37%] top-[40%] z-[200] text-center">
+          <button className="text-lg bg-red-400 text-white rounded-[50%] px-2 absolute top-[-5rem] left-[35rem]" onClick={() => setWinState(false)}>X</button>
+          <h2>You're Correct The Number Was <span className="font-bold text-lg ">{props.adwanumber}</span> </h2>
           <h2 className="text-4xl font-bold">{correct.year5}</h2>
           <h2>THIS WAS THE YEAR ITALY AND ETHIOPIA SIGN THE TREATY!</h2>
-        </div>
+       </div>
+
+        
         </>
 
       ) : <h2></h2>
