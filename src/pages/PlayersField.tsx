@@ -78,7 +78,7 @@ function PlayersField(props: PlayersFieldProps) {
 
             <button onClick={values && handleAddValue}
             className="w-full bg-[#8D6C16] py-2 rounded-lg"
-            >Add Value</button>
+            >Submit</button>
           <div className="flex flex-col justify-center gap-6 w-full h-[150px] overflow-scroll border-2 border-[#8D6C16] rounded-lg px-4 pt-6">
           {
               values.map((e,i) => (
