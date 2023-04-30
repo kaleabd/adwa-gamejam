@@ -3,6 +3,8 @@ import useGameDataStore from "../utils/GameStore";
 import Brana from '../assets/Rectangle 1.png'
 import years from "../assets/data";
 import Scroll from '../assets/popup.png'
+import { useNavigate } from "react-router-dom";
+
 interface PlayersFieldState {
   userGuess: number | string;
 }
@@ -14,8 +16,8 @@ function PlayersField(props: PlayersFieldProps) {
     userGuess: "",
   });
   const [winState, setWinState] = useState<boolean>(false)
-  
-  const {values,addValues, setAdwaNumber } =useGameDataStore()
+  const navigate = useNavigate()
+  const {values,addValues, setAdwaNumber,resetValues } =useGameDataStore()
   const correct = {
     year1: years[0].year1,
     year2: years[1].year2,
@@ -53,9 +55,9 @@ function PlayersField(props: PlayersFieldProps) {
       winState ? (
         <>
         <div className="absolute w-full h-screen top-0 bg-black/70 z-20"></div>
-        <img src={Scroll} alt="" className="absolute w-full top-[20%] left-[3%] z-[100]"/>
+        <img src={Scroll} alt="" className="absolute top-[20%] left-[3%] z-[100]"/>
        <div className="absolute left-[37%] top-[40%] z-[200] text-center">
-          <button className="text-lg bg-red-400 text-white rounded-[50%] px-2 absolute top-[-5rem] left-[35rem]" onClick={() => setWinState(false)}>X</button>
+          <button className="text-lg bg-red-400 text-white rounded-[50%] px-2 absolute top-[-5rem] left-[35rem]" onClick={() => (setWinState(false),resetValues(), navigate('/'))}>X</button>
           <h2>You're Correct The Number Was <span className="font-bold text-lg ">{props.adwanumber}</span> </h2>
           <h2 className="text-4xl font-bold">{correct.year5}</h2>
           <h2>THIS WAS THE YEAR ITALY AND ETHIOPIA SIGN THE TREATY!</h2>
@@ -70,10 +72,11 @@ function PlayersField(props: PlayersFieldProps) {
         <img src={Brana} alt="" className='w-full h-[100vh]'/>
         <div className="absolute top-[25%] left-[40%] flex flex-col gap-4">
             <input type="text" onChange={handleFirstPlayerSecretNumberChange} value={userNumber.userGuess}
+            required={true}
             className="bg-transparent w-full border-2 border-black/70 p-2 rounded-lg text-center outline-none"
             />
 
-            <button onClick={handleAddValue}
+            <button onClick={values && handleAddValue}
             className="w-full bg-[#8D6C16] py-2 rounded-lg"
             >Add Value</button>
           <div className="flex flex-col justify-center gap-6 w-full h-[150px] overflow-scroll border-2 border-[#8D6C16] rounded-lg px-4 pt-6">
