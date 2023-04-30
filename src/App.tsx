@@ -1,9 +1,7 @@
 import { randomizeDigits } from "./utils/randomize";
 import years from "./assets/data";
-// import { useState } from "react";
 import PlayersField from "./pages/PlayersField";
-// import positionCalculator from "./assets/positionCalc";
-import { useNavigate } from "react-router-dom";
+
 
 function App() {
   const adwayears = {
@@ -14,7 +12,6 @@ function App() {
     year5: years[4].year5
   } 
   const adwayear = randomizeDigits(adwayears.year5)
-  const navigate = useNavigate()
   return (
     <div className="bg-gray-700">
       <div>
